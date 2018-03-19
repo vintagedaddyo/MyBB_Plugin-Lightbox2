@@ -16,7 +16,7 @@
 // plugin_info
 
 $l['lightbox2_Name'] = 'Lightbox 2';
-$l['lightbox2_Desc'] = 'Open thumbnails with Lightbox 2.';
+$l['lightbox2_Desc'] = 'Abre miniaturas con Lightbox 2.';
 $l['lightbox2_Web'] = 'http://mods.mybboard.net/view/lightbox-2';
 $l['lightbox2_Auth'] = 'Sebastian Wunderlich & Vintagedaddyo';
 $l['lightbox2_AuthSite'] = 'http://community.mybb.com/user-6029.html';
