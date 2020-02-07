@@ -8,11 +8,12 @@
  *
  * MyBB Version: 1.8
  *
- * Plugin Version: 1.5
+ * Plugin Version: 1.6
  * 
  */
 
 // Disallow direct access to this file for security reasons
+
 if(!defined("IN_MYBB"))
 {
 	die("Direct initialization of this file is not allowed.<br /><br />Please make sure IN_MYBB is defined.");
@@ -55,9 +56,8 @@ function lightbox2($page)
 		$permissions=forum_permissions($thread["fid"]);
 		if(!empty($thread)&&$permissions["candlattachments"]==1)
 		{
-			$page=str_replace("</head>",'<link rel="stylesheet" type="text/css" href="'.$mybb->settings["bburl"].'/themes/lightbox.css" />
-<script type="text/javascript" src="'.$mybb->settings["bburl"].'/jscripts/scriptaculous.js?load=effects,builder"></script>
-<script type="text/javascript" src="'.$mybb->settings["bburl"].'/jscripts/lightbox/lightbox.js"></script>
+			$page=str_replace("</head>",'<link rel="stylesheet" type="text/css" href="'.$mybb->settings["bburl"].'/themes/lightbox2/lightbox.css" />
+<script type="text/javascript" src="'.$mybb->settings["bburl"].'/jscripts/lightbox2/lightbox.js"></script>
 </head>',$page);
 			$page=preg_replace('/\<a href="attachment.php\?aid=([0-9]+)" target="_blank"\>\<img/Usi','<a href="attachment.php?aid=$1" rel="lightbox[tid'.intval($mybb->input["tid"]).']"><img',$page);
 			return $page;
@@ -67,9 +67,8 @@ function lightbox2($page)
     	{
 
 		{
-			$page=str_replace("</head>",'<link rel="stylesheet" type="text/css" href="'.$mybb->settings["bburl"].'/themes/lightbox.css" />
-<script type="text/javascript" src="'.$mybb->settings["bburl"].'/jscripts/scriptaculous.js?load=effects,builder"></script>
-<script type="text/javascript" src="'.$mybb->settings["bburl"].'/jscripts/lightbox/lightbox.js"></script>
+			$page=str_replace("</head>",'<link rel="stylesheet" type="text/css" href="'.$mybb->settings["bburl"].'/themes/lightbox2/lightbox.css" />
+<script type="text/javascript" src="'.$mybb->settings["bburl"].'/jscripts/lightbox2/lightbox.js"></script>
 </head>',$page);
 			$page=preg_replace('/\<a href="attachment.php\?aid=([0-9]+)" target="_blank"\>\<img/Usi','<a href="attachment.php?aid=$1" rel="lightbox[tid'.intval($mybb->input["tid"]).']"><img',$page);
 			return $page;
