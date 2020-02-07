@@ -29,3 +29,8 @@ Further localization support
 - removed old un-needed files
 - moved some files
 - minor directory re-structure
+
+
+* Updated to version 1.7 by: Vintagedaddyo
+
+- portal permissions quick fix
