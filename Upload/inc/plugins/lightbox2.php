@@ -21,6 +21,7 @@ if(!defined("IN_MYBB"))
 
 $plugins->add_hook("pre_output_page","lightbox2");
 
+
 function lightbox2_info()
 {
     global $lang;
@@ -49,6 +50,7 @@ function lightbox2_info()
 function lightbox2($page)
 {
 	global $mybb,$db;
+
 	if(THIS_SCRIPT=="showthread.php")
 	{
 		$result=$db->simple_select("threads","fid","tid='".intval($mybb->input["tid"])."'",array("limit"=>1));
@@ -63,9 +65,21 @@ function lightbox2($page)
 			return $page;
 		}
 	}
+
+
     if(THIS_SCRIPT=="portal.php")
     {
 
+    	$query = $db->query("
+		SELECT t.tid, t.fid, t.uid, t.lastpost, t.lastposteruid, t.lastposter, t.subject, t.replies, t.views, u.username
+		FROM ".TABLE_PREFIX."threads t
+		LEFT JOIN ".TABLE_PREFIX."users u ON (u.uid=t.uid)
+		WHERE 1=1 {$excludeforums}{$tunviewwhere} AND t.visible='1' AND t.closed NOT LIKE 'moved|%'
+		ORDER BY t.lastpost DESC
+		LIMIT 0, ".$mybb->settings['portal_showdiscussionsnum']);       
+		$thread = $db->fetch_array($query);
+		$forumpermissions = forum_permissions($thread['fid']);
+		if(!empty($thread)&&$forumpermissions["candlattachments"]==1)
 		{
 			$page=str_replace("</head>",'<link rel="stylesheet" type="text/css" href="'.$mybb->settings["bburl"].'/themes/lightbox2/lightbox.css" />
 <script type="text/javascript" src="'.$mybb->settings["bburl"].'/jscripts/lightbox2/lightbox.js"></script>
