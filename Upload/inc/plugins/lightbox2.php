@@ -66,6 +66,10 @@ function lightbox2($page)
     if(THIS_SCRIPT=="portal.php")
     	{
 
+		$result=$db->simple_select("threads","fid","tid='".intval($mybb->input["tid"])."'",array("limit"=>1));
+		$thread=$db->fetch_array($result);
+		$permissions=forum_permissions($thread["fid"]);
+		if(!empty($thread)&&$permissions["candlattachments"]==1)
 		{
 			$page=str_replace("</head>",'<link rel="stylesheet" type="text/css" href="'.$mybb->settings["bburl"].'/themes/lightbox2/lightbox.css" />
 <script type="text/javascript" src="'.$mybb->settings["bburl"].'/jscripts/lightbox2/lightbox.js"></script>
